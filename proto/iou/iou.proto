@@ -1,0 +1,87 @@
+syntax = "proto3";
+package ioux.iou;
+
+import "gogoproto/gogo.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "cosmos/base/v1beta1/coin.proto";
+
+option go_package = "github.com/lcnem/ioux/x/iou/types";
+
+message Iou {
+  string namespace = 1 [(gogoproto.moretags) = "yaml:\"namespace\""];
+  string base_denom = 2 [(gogoproto.moretags) = "yaml:\"base_denom\""];
+  string issuer = 3 [
+    (gogoproto.moretags) = "yaml:\"issuer\"",
+    (gogoproto.customtype) = "github.com/lcnem/ioux/types.StringAccAddress",
+    (gogoproto.nullable) = false
+  ];
+  string admin = 4 [
+    (gogoproto.moretags) = "yaml:\"admin\"",
+    (gogoproto.customtype) = "github.com/lcnem/ioux/types.StringAccAddress",
+    (gogoproto.nullable) = false
+  ];
+}
+
+message MsgCreateIou {
+  string namespace = 1 [(gogoproto.moretags) = "yaml:\"namespace\""];
+  string base_denom = 2 [(gogoproto.moretags) = "yaml:\"base_denom\""];
+  string issuer = 3 [
+    (gogoproto.moretags) = "yaml:\"issuer\"",
+    (gogoproto.customtype) = "github.com/lcnem/ioux/types.StringAccAddress",
+    (gogoproto.nullable) = false
+  ];
+  string admin = 4 [
+    (gogoproto.moretags) = "yaml:\"admin\"",
+    (gogoproto.customtype) = "github.com/lcnem/ioux/types.StringAccAddress",
+    (gogoproto.nullable) = false
+  ];
+}
+
+message MsgUpdateIouIssuer {
+  string namespace = 1 [(gogoproto.moretags) = "yaml:\"namespace\""];
+  string base_denom = 2 [(gogoproto.moretags) = "yaml:\"base_denom\""];
+  string issuer = 3 [
+    (gogoproto.moretags) = "yaml:\"issuer\"",
+    (gogoproto.customtype) = "github.com/lcnem/ioux/types.StringAccAddress",
+    (gogoproto.nullable) = false
+  ];
+  string admin = 4 [
+    (gogoproto.moretags) = "yaml:\"admin\"",
+    (gogoproto.customtype) = "github.com/lcnem/ioux/types.StringAccAddress",
+    (gogoproto.nullable) = false
+  ];
+}
+
+message MsgIssueIou {
+  string namespace = 1 [(gogoproto.moretags) = "yaml:\"namespace\""];
+  string prefix = 2 [(gogoproto.moretags) = "yaml:\"prefix\""];
+  string base_denom = 3 [(gogoproto.moretags) = "yaml:\"base_denom\""];
+  string issuer = 4 [
+    (gogoproto.moretags) = "yaml:\"issuer\"",
+    (gogoproto.customtype) = "github.com/lcnem/ioux/types.StringAccAddress",
+    (gogoproto.nullable) = false
+  ];
+  cosmos.base.v1beta1.Coin amount = 5 [
+    (gogoproto.moretags) = "yaml:\"amount\"",
+    (gogoproto.nullable) = false
+  ];
+}
+
+message MsgBurnIou {
+  string namespace = 1 [(gogoproto.moretags) = "yaml:\"namespace\""];
+  string prefix = 2 [(gogoproto.moretags) = "yaml:\"prefix\""];
+  string base_denom = 3 [(gogoproto.moretags) = "yaml:\"base_denom\""];
+  string holder = 4 [
+    (gogoproto.moretags) = "yaml:\"holder\"",
+    (gogoproto.customtype) = "github.com/lcnem/ioux/types.StringAccAddress",
+    (gogoproto.nullable) = false
+  ];
+  cosmos.base.v1beta1.Coin amount = 5 [
+    (gogoproto.moretags) = "yaml:\"amount\"",
+    (gogoproto.nullable) = false
+  ];
+}
+
+message Params {
+}

@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  iouxd:
+    container_name: iouxd
+    image: lcnem/ioux
+    # ports:
+    #   - 1317:1317
+    #   - 9090:9090
+    #   - 26656:26656
+    #   - 26657:26657
+    volumes:
+      - ~/.ioux:/root/.ioux
+    command: iouxd start
+    network_mode: host
+    restart: always

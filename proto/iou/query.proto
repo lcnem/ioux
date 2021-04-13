@@ -1,0 +1,62 @@
+syntax = "proto3";
+package ioux.iou;
+
+import "google/api/annotations.proto";
+import "google/protobuf/any.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "cosmos_proto/cosmos.proto";
+// this line is used by starport scaffolding # 1
+import "iou/iou.proto";
+
+option go_package = "github.com/lcnem/ioux/x/iou/types";
+
+// Query defines the gRPC querier service.
+service Query {
+	rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+		option (google.api.http).get = "/ioux/iou/params";
+	}
+  // this line is used by starport scaffolding # 2
+	rpc Iou(QueryGetIouRequest) returns (QueryGetIouResponse) {
+		option (google.api.http).get = "/ioux/iou/ious/{id}";
+	}
+	rpc IouAll(QueryAllIouRequest) returns (QueryAllIouResponse) {
+		option (google.api.http).get = "/ioux/iou/ious";
+	}
+  rpc IouAllByBaseDenom(QueryAllIouByBaseDenomRequest) returns (QueryAllIouByBaseDenomResponse) {
+		option (google.api.http).get = "/ioux/iou/base_denoms/{base_denom}/ious";
+	}
+}
+
+message QueryParamsRequest {}
+
+message QueryParamsResponse {
+	Params params = 1;
+}
+
+// this line is used by starport scaffolding # 3
+message QueryGetIouRequest {
+	uint64 id = 1;
+}
+
+message QueryGetIouResponse {
+  Iou iou = 1;
+}
+
+message QueryAllIouRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllIouResponse {
+  repeated Iou ious = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryAllIouByBaseDenomRequest {
+  string base_denom = 1;
+	cosmos.base.query.v1beta1.PageRequest pagination = 2;
+}
+
+message QueryAllIouByBaseDenomResponse {
+  repeated Iou ious = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
