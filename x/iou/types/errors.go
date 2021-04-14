@@ -8,5 +8,6 @@ import (
 
 // x/iou module sentinel errors
 var (
-	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
+	ErrInvalidNamespaceId = sdkerrors.Register(ModuleName, 1, "Invalid Namespace ID")
+	ErrInvalidPrefix      = sdkerrors.Register(ModuleName, 2, "Invalid Prefix")
 )

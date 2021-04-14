@@ -16,14 +16,20 @@ func NewHandler(k keeper.Keeper) sdk.Handler {
 
 		switch msg := msg.(type) {
 		// this line is used by starport scaffolding # 1
-		case *types.MsgCreateIou:
-			return handleMsgCreateIou(ctx, k, msg)
+		case *types.MsgCreateIouNamespace:
+			return handleMsgCreateIouNamespace(ctx, k, msg)
 
-		case *types.MsgUpdateIou:
-			return handleMsgUpdateIou(ctx, k, msg)
+		case *types.MsgUpdateIouNamespaceAdmin:
+			return handleMsgUpdateIouNamespaceAdmin(ctx, k, msg)
 
-		case *types.MsgDeleteIou:
-			return handleMsgDeleteIou(ctx, k, msg)
+		case *types.MsgUpdateIouNamespaceIssuer:
+			return handleMsgUpdateIouNamespaceIssuer(ctx, k, msg)
+
+		case *types.MsgIssueIou:
+			return handleMsgIssueIou(ctx, k, msg)
+
+		case *types.MsgBurnIou:
+			return handleMsgBurnIou(ctx, k, msg)
 
 		default:
 			errMsg := fmt.Sprintf("unrecognized %s message type: %T", types.ModuleName, msg)

@@ -18,5 +18,5 @@ message GenesisState {
     (gogoproto.nullable) = false
   ];
   // this line is used by starport scaffolding # genesis/proto/state
-  repeated Iou ious = 2; // this line is used by starport scaffolding # genesis/proto/stateField
+  repeated IouNamespace iou_namespaces = 2; // this line is used by starport scaffolding # genesis/proto/stateField
 }

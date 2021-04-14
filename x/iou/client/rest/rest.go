@@ -7,9 +7,7 @@ import (
 	// this line is used by starport scaffolding # 1
 )
 
-const (
-	MethodGet = "GET"
-)
+const ()
 
 // RegisterRoutes registers iou-related REST handlers to a router
 func RegisterRoutes(clientCtx client.Context, r *mux.Router) {
@@ -21,15 +19,9 @@ func RegisterRoutes(clientCtx client.Context, r *mux.Router) {
 
 func registerQueryRoutes(clientCtx client.Context, r *mux.Router) {
 	// this line is used by starport scaffolding # 3
-	r.HandleFunc("/iou/ious/{id}", getIouHandler(clientCtx)).Methods("GET")
-	r.HandleFunc("/iou/ious", listIouHandler(clientCtx)).Methods("GET")
 
 }
 
 func registerTxHandlers(clientCtx client.Context, r *mux.Router) {
 	// this line is used by starport scaffolding # 4
-	r.HandleFunc("/iou/ious", createIouHandler(clientCtx)).Methods("POST")
-	r.HandleFunc("/iou/ious/{id}", updateIouHandler(clientCtx)).Methods("POST")
-	r.HandleFunc("/iou/ious/{id}", deleteIouHandler(clientCtx)).Methods("POST")
-
 }

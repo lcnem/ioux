@@ -5,23 +5,22 @@
 ## Table of Contents
 
 - [iou/iou.proto](#iou/iou.proto)
-    - [Iou](#ioux.iou.Iou)
+    - [IouNamespace](#ioux.iou.IouNamespace)
     - [MsgBurnIou](#ioux.iou.MsgBurnIou)
-    - [MsgCreateIou](#ioux.iou.MsgCreateIou)
+    - [MsgCreateIouNamespace](#ioux.iou.MsgCreateIouNamespace)
     - [MsgIssueIou](#ioux.iou.MsgIssueIou)
-    - [MsgUpdateIouIssuer](#ioux.iou.MsgUpdateIouIssuer)
+    - [MsgUpdateIouNamespaceAdmin](#ioux.iou.MsgUpdateIouNamespaceAdmin)
+    - [MsgUpdateIouNamespaceIssuer](#ioux.iou.MsgUpdateIouNamespaceIssuer)
     - [Params](#ioux.iou.Params)
   
 - [iou/genesis.proto](#iou/genesis.proto)
     - [GenesisState](#ioux.iou.GenesisState)
   
 - [iou/query.proto](#iou/query.proto)
-    - [QueryAllIouByBaseDenomRequest](#ioux.iou.QueryAllIouByBaseDenomRequest)
-    - [QueryAllIouByBaseDenomResponse](#ioux.iou.QueryAllIouByBaseDenomResponse)
-    - [QueryAllIouRequest](#ioux.iou.QueryAllIouRequest)
-    - [QueryAllIouResponse](#ioux.iou.QueryAllIouResponse)
-    - [QueryGetIouRequest](#ioux.iou.QueryGetIouRequest)
-    - [QueryGetIouResponse](#ioux.iou.QueryGetIouResponse)
+    - [QueryAllIouNamespaceRequest](#ioux.iou.QueryAllIouNamespaceRequest)
+    - [QueryAllIouNamespaceResponse](#ioux.iou.QueryAllIouNamespaceResponse)
+    - [QueryGetIouNamespaceRequest](#ioux.iou.QueryGetIouNamespaceRequest)
+    - [QueryGetIouNamespaceResponse](#ioux.iou.QueryGetIouNamespaceResponse)
     - [QueryParamsRequest](#ioux.iou.QueryParamsRequest)
     - [QueryParamsResponse](#ioux.iou.QueryParamsResponse)
   
@@ -38,18 +37,17 @@
 
 
 
-<a name="ioux.iou.Iou"></a>
+<a name="ioux.iou.IouNamespace"></a>
 
-### Iou
+### IouNamespace
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `namespace` | [string](#string) |  |  |
-| `base_denom` | [string](#string) |  |  |
-| `issuer` | [string](#string) |  |  |
+| `id` | [string](#string) |  |  |
 | `admin` | [string](#string) |  |  |
+| `issuer` | [string](#string) |  |  |
 
 
 
@@ -64,29 +62,28 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `namespace` | [string](#string) |  |  |
+| `namespace_id` | [string](#string) |  |  |
 | `prefix` | [string](#string) |  |  |
 | `base_denom` | [string](#string) |  |  |
 | `holder` | [string](#string) |  |  |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  |  |
+| `amount` | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="ioux.iou.MsgCreateIou"></a>
+<a name="ioux.iou.MsgCreateIouNamespace"></a>
 
-### MsgCreateIou
+### MsgCreateIouNamespace
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `namespace` | [string](#string) |  |  |
-| `base_denom` | [string](#string) |  |  |
-| `issuer` | [string](#string) |  |  |
+| `id` | [string](#string) |  |  |
 | `admin` | [string](#string) |  |  |
+| `issuer` | [string](#string) |  |  |
 
 
 
@@ -101,29 +98,46 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `namespace` | [string](#string) |  |  |
+| `namespace_id` | [string](#string) |  |  |
 | `prefix` | [string](#string) |  |  |
 | `base_denom` | [string](#string) |  |  |
 | `issuer` | [string](#string) |  |  |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  |  |
+| `destination` | [string](#string) |  |  |
+| `amount` | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="ioux.iou.MsgUpdateIouIssuer"></a>
+<a name="ioux.iou.MsgUpdateIouNamespaceAdmin"></a>
 
-### MsgUpdateIouIssuer
+### MsgUpdateIouNamespaceAdmin
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `namespace` | [string](#string) |  |  |
-| `base_denom` | [string](#string) |  |  |
-| `issuer` | [string](#string) |  |  |
+| `id` | [string](#string) |  |  |
+| `admin_before` | [string](#string) |  |  |
+| `admin_after` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="ioux.iou.MsgUpdateIouNamespaceIssuer"></a>
+
+### MsgUpdateIouNamespaceIssuer
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `id` | [string](#string) |  |  |
 | `admin` | [string](#string) |  |  |
+| `issuer` | [string](#string) |  |  |
 
 
 
@@ -165,7 +179,7 @@ GenesisState defines the auction module's genesis state.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | `params` | [Params](#ioux.iou.Params) |  |  |
-| `ious` | [Iou](#ioux.iou.Iou) | repeated | this line is used by starport scaffolding # genesis/proto/state
+| `iou_namespaces` | [IouNamespace](#ioux.iou.IouNamespace) | repeated | this line is used by starport scaffolding # genesis/proto/state
 
 this line is used by starport scaffolding # genesis/proto/stateField |
 
@@ -190,41 +204,9 @@ this line is used by starport scaffolding # genesis/proto/stateField |
 
 
 
-<a name="ioux.iou.QueryAllIouByBaseDenomRequest"></a>
+<a name="ioux.iou.QueryAllIouNamespaceRequest"></a>
 
-### QueryAllIouByBaseDenomRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `base_denom` | [string](#string) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="ioux.iou.QueryAllIouByBaseDenomResponse"></a>
-
-### QueryAllIouByBaseDenomResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `ious` | [Iou](#ioux.iou.Iou) | repeated |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
-<a name="ioux.iou.QueryAllIouRequest"></a>
-
-### QueryAllIouRequest
+### QueryAllIouNamespaceRequest
 
 
 
@@ -237,15 +219,15 @@ this line is used by starport scaffolding # genesis/proto/stateField |
 
 
 
-<a name="ioux.iou.QueryAllIouResponse"></a>
+<a name="ioux.iou.QueryAllIouNamespaceResponse"></a>
 
-### QueryAllIouResponse
+### QueryAllIouNamespaceResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `ious` | [Iou](#ioux.iou.Iou) | repeated |  |
+| `iou_namespaces` | [IouNamespace](#ioux.iou.IouNamespace) | repeated |  |
 | `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
 
 
@@ -253,30 +235,30 @@ this line is used by starport scaffolding # genesis/proto/stateField |
 
 
 
-<a name="ioux.iou.QueryGetIouRequest"></a>
+<a name="ioux.iou.QueryGetIouNamespaceRequest"></a>
 
-### QueryGetIouRequest
+### QueryGetIouNamespaceRequest
 this line is used by starport scaffolding # 3
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `id` | [uint64](#uint64) |  |  |
+| `id` | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="ioux.iou.QueryGetIouResponse"></a>
+<a name="ioux.iou.QueryGetIouNamespaceResponse"></a>
 
-### QueryGetIouResponse
+### QueryGetIouNamespaceResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `iou` | [Iou](#ioux.iou.Iou) |  |  |
+| `iou_namepsace` | [IouNamespace](#ioux.iou.IouNamespace) |  |  |
 
 
 
@@ -322,9 +304,8 @@ Query defines the gRPC querier service.
 | Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
 | ----------- | ------------ | ------------- | ------------| ------- | -------- |
 | `Params` | [QueryParamsRequest](#ioux.iou.QueryParamsRequest) | [QueryParamsResponse](#ioux.iou.QueryParamsResponse) |  | GET|/ioux/iou/params|
-| `Iou` | [QueryGetIouRequest](#ioux.iou.QueryGetIouRequest) | [QueryGetIouResponse](#ioux.iou.QueryGetIouResponse) | this line is used by starport scaffolding # 2 | GET|/ioux/iou/ious/{id}|
-| `IouAll` | [QueryAllIouRequest](#ioux.iou.QueryAllIouRequest) | [QueryAllIouResponse](#ioux.iou.QueryAllIouResponse) |  | GET|/ioux/iou/ious|
-| `IouAllByBaseDenom` | [QueryAllIouByBaseDenomRequest](#ioux.iou.QueryAllIouByBaseDenomRequest) | [QueryAllIouByBaseDenomResponse](#ioux.iou.QueryAllIouByBaseDenomResponse) |  | GET|/ioux/iou/base_denoms/{base_denom}/ious|
+| `IouNamespace` | [QueryGetIouNamespaceRequest](#ioux.iou.QueryGetIouNamespaceRequest) | [QueryGetIouNamespaceResponse](#ioux.iou.QueryGetIouNamespaceResponse) | this line is used by starport scaffolding # 2 | GET|/ioux/iou/iou_namespaces/{id}|
+| `IouNamespaceAll` | [QueryAllIouNamespaceRequest](#ioux.iou.QueryAllIouNamespaceRequest) | [QueryAllIouNamespaceResponse](#ioux.iou.QueryAllIouNamespaceResponse) |  | GET|/ioux/iou/iou_namespaces|
 
  <!-- end services -->
 

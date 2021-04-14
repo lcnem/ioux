@@ -11,12 +11,12 @@ import (
 func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) {
 	// this line is used by starport scaffolding # genesis/module/init
 	// Set all the iou
-	for _, elem := range genState.IouList {
-		k.SetIou(ctx, *elem)
+	for _, elem := range genState.IouNamespaces {
+		k.SetIouNamespace(ctx, *elem)
 	}
 
 	// Set iou count
-	k.SetIouCount(ctx, int64(len(genState.IouList)))
+	k.SetIouNamespaceCount(ctx, int64(len(genState.IouNamespaces)))
 
 }
 
@@ -26,10 +26,10 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 
 	// this line is used by starport scaffolding # genesis/module/export
 	// Get all iou
-	iouList := k.GetAllIou(ctx)
+	iouList := k.GetAllIouNamespace(ctx)
 	for _, elem := range iouList {
 		elem := elem
-		genesis.IouList = append(genesis.IouList, &elem)
+		genesis.IouNamespaces = append(genesis.IouNamespaces, &elem)
 	}
 
 	return genesis

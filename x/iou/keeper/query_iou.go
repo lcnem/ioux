@@ -7,7 +7,7 @@ import (
 )
 
 func listIou(ctx sdk.Context, keeper Keeper, legacyQuerierCdc *codec.LegacyAmino) ([]byte, error) {
-	msgs := keeper.GetAllIou(ctx)
+	msgs := keeper.GetAllIouNamespace(ctx)
 
 	bz, err := codec.MarshalJSONIndent(legacyQuerierCdc, msgs)
 	if err != nil {
@@ -18,7 +18,7 @@ func listIou(ctx sdk.Context, keeper Keeper, legacyQuerierCdc *codec.LegacyAmino
 }
 
 func getIou(ctx sdk.Context, id string, keeper Keeper, legacyQuerierCdc *codec.LegacyAmino) ([]byte, error) {
-	msg := keeper.GetIou(ctx, id)
+	msg := keeper.GetIouNamespace(ctx, id)
 
 	bz, err := codec.MarshalJSONIndent(legacyQuerierCdc, msg)
 	if err != nil {

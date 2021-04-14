@@ -16,14 +16,11 @@ service Query {
 		option (google.api.http).get = "/ioux/iou/params";
 	}
   // this line is used by starport scaffolding # 2
-	rpc Iou(QueryGetIouRequest) returns (QueryGetIouResponse) {
-		option (google.api.http).get = "/ioux/iou/ious/{id}";
+	rpc IouNamespace(QueryGetIouNamespaceRequest) returns (QueryGetIouNamespaceResponse) {
+		option (google.api.http).get = "/ioux/iou/iou_namespaces/{id}";
 	}
-	rpc IouAll(QueryAllIouRequest) returns (QueryAllIouResponse) {
-		option (google.api.http).get = "/ioux/iou/ious";
-	}
-  rpc IouAllByBaseDenom(QueryAllIouByBaseDenomRequest) returns (QueryAllIouByBaseDenomResponse) {
-		option (google.api.http).get = "/ioux/iou/base_denoms/{base_denom}/ious";
+	rpc IouNamespaceAll(QueryAllIouNamespaceRequest) returns (QueryAllIouNamespaceResponse) {
+		option (google.api.http).get = "/ioux/iou/iou_namespaces";
 	}
 }
 
@@ -34,29 +31,19 @@ message QueryParamsResponse {
 }
 
 // this line is used by starport scaffolding # 3
-message QueryGetIouRequest {
-	uint64 id = 1;
+message QueryGetIouNamespaceRequest {
+	string id = 1;
 }
 
-message QueryGetIouResponse {
-  Iou iou = 1;
+message QueryGetIouNamespaceResponse {
+  IouNamespace iou_namepsace = 1;
 }
 
-message QueryAllIouRequest {
+message QueryAllIouNamespaceRequest {
 	cosmos.base.query.v1beta1.PageRequest pagination = 1;
 }
 
-message QueryAllIouResponse {
-  repeated Iou ious = 1;
-	cosmos.base.query.v1beta1.PageResponse pagination = 2;
-}
-
-message QueryAllIouByBaseDenomRequest {
-  string base_denom = 1;
-	cosmos.base.query.v1beta1.PageRequest pagination = 2;
-}
-
-message QueryAllIouByBaseDenomResponse {
-  repeated Iou ious = 1;
+message QueryAllIouNamespaceResponse {
+  repeated IouNamespace iou_namespaces = 1;
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }

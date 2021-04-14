@@ -112,22 +112,22 @@ func (m *QueryParamsResponse) GetParams() *Params {
 }
 
 // this line is used by starport scaffolding # 3
-type QueryGetIouRequest struct {
-	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+type QueryGetIouNamespaceRequest struct {
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (m *QueryGetIouRequest) Reset()         { *m = QueryGetIouRequest{} }
-func (m *QueryGetIouRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryGetIouRequest) ProtoMessage()    {}
-func (*QueryGetIouRequest) Descriptor() ([]byte, []int) {
+func (m *QueryGetIouNamespaceRequest) Reset()         { *m = QueryGetIouNamespaceRequest{} }
+func (m *QueryGetIouNamespaceRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetIouNamespaceRequest) ProtoMessage()    {}
+func (*QueryGetIouNamespaceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0d771595acbf7cc5, []int{2}
 }
-func (m *QueryGetIouRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetIouNamespaceRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryGetIouRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetIouNamespaceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryGetIouRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetIouNamespaceRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -137,234 +137,41 @@ func (m *QueryGetIouRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return b[:n], nil
 	}
 }
-func (m *QueryGetIouRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetIouRequest.Merge(m, src)
+func (m *QueryGetIouNamespaceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetIouNamespaceRequest.Merge(m, src)
 }
-func (m *QueryGetIouRequest) XXX_Size() int {
+func (m *QueryGetIouNamespaceRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryGetIouRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetIouRequest.DiscardUnknown(m)
+func (m *QueryGetIouNamespaceRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetIouNamespaceRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryGetIouRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetIouNamespaceRequest proto.InternalMessageInfo
 
-func (m *QueryGetIouRequest) GetId() uint64 {
+func (m *QueryGetIouNamespaceRequest) GetId() string {
 	if m != nil {
 		return m.Id
-	}
-	return 0
-}
-
-type QueryGetIouResponse struct {
-	Iou *Iou `protobuf:"bytes,1,opt,name=iou,proto3" json:"iou,omitempty"`
-}
-
-func (m *QueryGetIouResponse) Reset()         { *m = QueryGetIouResponse{} }
-func (m *QueryGetIouResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryGetIouResponse) ProtoMessage()    {}
-func (*QueryGetIouResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0d771595acbf7cc5, []int{3}
-}
-func (m *QueryGetIouResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *QueryGetIouResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryGetIouResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *QueryGetIouResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetIouResponse.Merge(m, src)
-}
-func (m *QueryGetIouResponse) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryGetIouResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetIouResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_QueryGetIouResponse proto.InternalMessageInfo
-
-func (m *QueryGetIouResponse) GetIou() *Iou {
-	if m != nil {
-		return m.Iou
-	}
-	return nil
-}
-
-type QueryAllIouRequest struct {
-	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
-}
-
-func (m *QueryAllIouRequest) Reset()         { *m = QueryAllIouRequest{} }
-func (m *QueryAllIouRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryAllIouRequest) ProtoMessage()    {}
-func (*QueryAllIouRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0d771595acbf7cc5, []int{4}
-}
-func (m *QueryAllIouRequest) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *QueryAllIouRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryAllIouRequest.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *QueryAllIouRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllIouRequest.Merge(m, src)
-}
-func (m *QueryAllIouRequest) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryAllIouRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllIouRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_QueryAllIouRequest proto.InternalMessageInfo
-
-func (m *QueryAllIouRequest) GetPagination() *query.PageRequest {
-	if m != nil {
-		return m.Pagination
-	}
-	return nil
-}
-
-type QueryAllIouResponse struct {
-	Ious       []*Iou              `protobuf:"bytes,1,rep,name=ious,proto3" json:"ious,omitempty"`
-	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
-}
-
-func (m *QueryAllIouResponse) Reset()         { *m = QueryAllIouResponse{} }
-func (m *QueryAllIouResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryAllIouResponse) ProtoMessage()    {}
-func (*QueryAllIouResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0d771595acbf7cc5, []int{5}
-}
-func (m *QueryAllIouResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *QueryAllIouResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryAllIouResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *QueryAllIouResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllIouResponse.Merge(m, src)
-}
-func (m *QueryAllIouResponse) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryAllIouResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllIouResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_QueryAllIouResponse proto.InternalMessageInfo
-
-func (m *QueryAllIouResponse) GetIous() []*Iou {
-	if m != nil {
-		return m.Ious
-	}
-	return nil
-}
-
-func (m *QueryAllIouResponse) GetPagination() *query.PageResponse {
-	if m != nil {
-		return m.Pagination
-	}
-	return nil
-}
-
-type QueryAllIouByBaseDenomRequest struct {
-	BaseDenom  string             `protobuf:"bytes,1,opt,name=base_denom,json=baseDenom,proto3" json:"base_denom,omitempty"`
-	Pagination *query.PageRequest `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
-}
-
-func (m *QueryAllIouByBaseDenomRequest) Reset()         { *m = QueryAllIouByBaseDenomRequest{} }
-func (m *QueryAllIouByBaseDenomRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryAllIouByBaseDenomRequest) ProtoMessage()    {}
-func (*QueryAllIouByBaseDenomRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0d771595acbf7cc5, []int{6}
-}
-func (m *QueryAllIouByBaseDenomRequest) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *QueryAllIouByBaseDenomRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryAllIouByBaseDenomRequest.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *QueryAllIouByBaseDenomRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllIouByBaseDenomRequest.Merge(m, src)
-}
-func (m *QueryAllIouByBaseDenomRequest) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryAllIouByBaseDenomRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllIouByBaseDenomRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_QueryAllIouByBaseDenomRequest proto.InternalMessageInfo
-
-func (m *QueryAllIouByBaseDenomRequest) GetBaseDenom() string {
-	if m != nil {
-		return m.BaseDenom
 	}
 	return ""
 }
 
-func (m *QueryAllIouByBaseDenomRequest) GetPagination() *query.PageRequest {
-	if m != nil {
-		return m.Pagination
-	}
-	return nil
+type QueryGetIouNamespaceResponse struct {
+	IouNamepsace *IouNamespace `protobuf:"bytes,1,opt,name=iou_namepsace,json=iouNamepsace,proto3" json:"iou_namepsace,omitempty"`
 }
 
-type QueryAllIouByBaseDenomResponse struct {
-	Ious       []*Iou              `protobuf:"bytes,1,rep,name=ious,proto3" json:"ious,omitempty"`
-	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+func (m *QueryGetIouNamespaceResponse) Reset()         { *m = QueryGetIouNamespaceResponse{} }
+func (m *QueryGetIouNamespaceResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetIouNamespaceResponse) ProtoMessage()    {}
+func (*QueryGetIouNamespaceResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0d771595acbf7cc5, []int{3}
 }
-
-func (m *QueryAllIouByBaseDenomResponse) Reset()         { *m = QueryAllIouByBaseDenomResponse{} }
-func (m *QueryAllIouByBaseDenomResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryAllIouByBaseDenomResponse) ProtoMessage()    {}
-func (*QueryAllIouByBaseDenomResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0d771595acbf7cc5, []int{7}
-}
-func (m *QueryAllIouByBaseDenomResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetIouNamespaceResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryAllIouByBaseDenomResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetIouNamespaceResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryAllIouByBaseDenomResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetIouNamespaceResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -374,26 +181,115 @@ func (m *QueryAllIouByBaseDenomResponse) XXX_Marshal(b []byte, deterministic boo
 		return b[:n], nil
 	}
 }
-func (m *QueryAllIouByBaseDenomResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllIouByBaseDenomResponse.Merge(m, src)
+func (m *QueryGetIouNamespaceResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetIouNamespaceResponse.Merge(m, src)
 }
-func (m *QueryAllIouByBaseDenomResponse) XXX_Size() int {
+func (m *QueryGetIouNamespaceResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryAllIouByBaseDenomResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllIouByBaseDenomResponse.DiscardUnknown(m)
+func (m *QueryGetIouNamespaceResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetIouNamespaceResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryAllIouByBaseDenomResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetIouNamespaceResponse proto.InternalMessageInfo
 
-func (m *QueryAllIouByBaseDenomResponse) GetIous() []*Iou {
+func (m *QueryGetIouNamespaceResponse) GetIouNamepsace() *IouNamespace {
 	if m != nil {
-		return m.Ious
+		return m.IouNamepsace
 	}
 	return nil
 }
 
-func (m *QueryAllIouByBaseDenomResponse) GetPagination() *query.PageResponse {
+type QueryAllIouNamespaceRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllIouNamespaceRequest) Reset()         { *m = QueryAllIouNamespaceRequest{} }
+func (m *QueryAllIouNamespaceRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllIouNamespaceRequest) ProtoMessage()    {}
+func (*QueryAllIouNamespaceRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0d771595acbf7cc5, []int{4}
+}
+func (m *QueryAllIouNamespaceRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllIouNamespaceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllIouNamespaceRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllIouNamespaceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllIouNamespaceRequest.Merge(m, src)
+}
+func (m *QueryAllIouNamespaceRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllIouNamespaceRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllIouNamespaceRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllIouNamespaceRequest proto.InternalMessageInfo
+
+func (m *QueryAllIouNamespaceRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllIouNamespaceResponse struct {
+	IouNamespaces []*IouNamespace     `protobuf:"bytes,1,rep,name=iou_namespaces,json=iouNamespaces,proto3" json:"iou_namespaces,omitempty"`
+	Pagination    *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllIouNamespaceResponse) Reset()         { *m = QueryAllIouNamespaceResponse{} }
+func (m *QueryAllIouNamespaceResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllIouNamespaceResponse) ProtoMessage()    {}
+func (*QueryAllIouNamespaceResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0d771595acbf7cc5, []int{5}
+}
+func (m *QueryAllIouNamespaceResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllIouNamespaceResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllIouNamespaceResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllIouNamespaceResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllIouNamespaceResponse.Merge(m, src)
+}
+func (m *QueryAllIouNamespaceResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllIouNamespaceResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllIouNamespaceResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllIouNamespaceResponse proto.InternalMessageInfo
+
+func (m *QueryAllIouNamespaceResponse) GetIouNamespaces() []*IouNamespace {
+	if m != nil {
+		return m.IouNamespaces
+	}
+	return nil
+}
+
+func (m *QueryAllIouNamespaceResponse) GetPagination() *query.PageResponse {
 	if m != nil {
 		return m.Pagination
 	}
@@ -403,54 +299,48 @@ func (m *QueryAllIouByBaseDenomResponse) GetPagination() *query.PageResponse {
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "ioux.iou.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "ioux.iou.QueryParamsResponse")
-	proto.RegisterType((*QueryGetIouRequest)(nil), "ioux.iou.QueryGetIouRequest")
-	proto.RegisterType((*QueryGetIouResponse)(nil), "ioux.iou.QueryGetIouResponse")
-	proto.RegisterType((*QueryAllIouRequest)(nil), "ioux.iou.QueryAllIouRequest")
-	proto.RegisterType((*QueryAllIouResponse)(nil), "ioux.iou.QueryAllIouResponse")
-	proto.RegisterType((*QueryAllIouByBaseDenomRequest)(nil), "ioux.iou.QueryAllIouByBaseDenomRequest")
-	proto.RegisterType((*QueryAllIouByBaseDenomResponse)(nil), "ioux.iou.QueryAllIouByBaseDenomResponse")
+	proto.RegisterType((*QueryGetIouNamespaceRequest)(nil), "ioux.iou.QueryGetIouNamespaceRequest")
+	proto.RegisterType((*QueryGetIouNamespaceResponse)(nil), "ioux.iou.QueryGetIouNamespaceResponse")
+	proto.RegisterType((*QueryAllIouNamespaceRequest)(nil), "ioux.iou.QueryAllIouNamespaceRequest")
+	proto.RegisterType((*QueryAllIouNamespaceResponse)(nil), "ioux.iou.QueryAllIouNamespaceResponse")
 }
 
 func init() { proto.RegisterFile("iou/query.proto", fileDescriptor_0d771595acbf7cc5) }
 
 var fileDescriptor_0d771595acbf7cc5 = []byte{
-	// 561 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x94, 0xcf, 0x6b, 0x13, 0x41,
-	0x14, 0xc7, 0xb3, 0x49, 0x0d, 0x76, 0xa4, 0x35, 0x4e, 0x55, 0x6a, 0x6c, 0x56, 0xbb, 0x88, 0x89,
-	0x1e, 0x76, 0x68, 0x05, 0x2f, 0x1e, 0xa4, 0x41, 0x2c, 0xb9, 0xd5, 0x1c, 0x45, 0x09, 0xb3, 0xc9,
-	0xb8, 0x0e, 0xec, 0xee, 0xdb, 0x66, 0x76, 0xa4, 0xa1, 0xf4, 0xa0, 0x07, 0x4f, 0x1e, 0x04, 0x0f,
-	0xfe, 0x3f, 0x9e, 0x3c, 0x16, 0xbc, 0x78, 0x94, 0xc4, 0x3f, 0x44, 0xe6, 0xc7, 0xb2, 0x59, 0xd7,
-	0x52, 0xf0, 0xd0, 0x4b, 0xe0, 0xcd, 0x7b, 0xf3, 0x79, 0xdf, 0xf7, 0xe6, 0x9b, 0x45, 0x57, 0x39,
-	0x48, 0x72, 0x28, 0xd9, 0x74, 0xe6, 0xa7, 0x53, 0xc8, 0x00, 0x5f, 0xe6, 0x20, 0x8f, 0x7c, 0x0e,
-	0xb2, 0xbd, 0x15, 0x02, 0x84, 0x11, 0x23, 0x34, 0xe5, 0x84, 0x26, 0x09, 0x64, 0x34, 0xe3, 0x90,
-	0x08, 0x53, 0xd7, 0xbe, 0x65, 0xb3, 0x3a, 0x0a, 0xe4, 0x1b, 0x42, 0x13, 0x8b, 0x68, 0x3f, 0x1c,
-	0x83, 0x88, 0x41, 0x90, 0x80, 0x0a, 0x66, 0xd8, 0xe4, 0xdd, 0x4e, 0xc0, 0x32, 0xba, 0x43, 0x52,
-	0x1a, 0xf2, 0x44, 0x73, 0x72, 0x8c, 0xa9, 0x1d, 0xe9, 0x88, 0x98, 0xc0, 0xa6, 0xd6, 0x94, 0x34,
-	0x0e, 0xd2, 0x84, 0xde, 0x75, 0x84, 0x5f, 0x28, 0xd6, 0x01, 0x9d, 0xd2, 0x58, 0x0c, 0xd9, 0xa1,
-	0x64, 0x22, 0xf3, 0x9e, 0xa2, 0x8d, 0xd2, 0xa9, 0x48, 0x21, 0x11, 0x0c, 0xf7, 0x50, 0x33, 0xd5,
-	0x27, 0x9b, 0xce, 0x5d, 0xa7, 0x77, 0x65, 0xb7, 0xe5, 0xe7, 0x63, 0xf9, 0xb6, 0xd2, 0xe6, 0xbd,
-	0x7b, 0x16, 0xbb, 0xcf, 0xb2, 0x01, 0x48, 0x8b, 0xc5, 0xeb, 0xa8, 0xce, 0x27, 0xfa, 0xee, 0xca,
-	0xb0, 0xce, 0x27, 0xde, 0x63, 0xdb, 0x26, 0xaf, 0xb2, 0x6d, 0xee, 0xa0, 0x06, 0x07, 0x69, 0x7b,
-	0xac, 0x15, 0x3d, 0x54, 0x8d, 0xca, 0x78, 0xaf, 0x2c, 0x7d, 0x2f, 0x8a, 0x96, 0xe8, 0xcf, 0x11,
-	0x2a, 0x16, 0x61, 0x6f, 0xdf, 0xf7, 0xed, 0xf0, 0x6a, 0x6b, 0xbe, 0x79, 0x11, 0xbb, 0x35, 0xff,
-	0x80, 0x86, 0xcc, 0xde, 0x1d, 0x2e, 0xdd, 0xf4, 0xde, 0x3b, 0x56, 0x56, 0x8e, 0xb7, 0xb2, 0xb6,
-	0xd1, 0x0a, 0x07, 0xa9, 0x66, 0x6f, 0x54, 0x75, 0xe9, 0x14, 0xde, 0x2f, 0x49, 0xa8, 0x6b, 0x09,
-	0xdd, 0x73, 0x25, 0x18, 0x7e, 0x49, 0xc3, 0x47, 0x07, 0x75, 0x96, 0x34, 0xf4, 0x67, 0x7d, 0x2a,
-	0xd8, 0x33, 0x96, 0x40, 0x9c, 0x4f, 0xdb, 0x41, 0x48, 0x01, 0x47, 0x13, 0x75, 0xa8, 0xa7, 0x5d,
-	0x1d, 0xae, 0x06, 0x79, 0xd5, 0x5f, 0xcb, 0xa8, 0xff, 0xf7, 0x32, 0x3e, 0x39, 0xc8, 0x3d, 0x4b,
-	0xc8, 0xc5, 0xef, 0x65, 0xf7, 0x5b, 0x03, 0x5d, 0xd2, 0x72, 0xf0, 0x08, 0x35, 0x8d, 0xe7, 0xf0,
-	0x56, 0xd1, 0xb1, 0x6a, 0xe5, 0x76, 0xe7, 0x8c, 0xac, 0x81, 0x7b, 0x9b, 0x1f, 0x7e, 0xfc, 0xfe,
-	0x52, 0xc7, 0xb8, 0xa5, 0xfe, 0x13, 0x47, 0xea, 0x87, 0x18, 0x0b, 0xe3, 0x11, 0x6a, 0x0c, 0x40,
-	0x56, 0xe8, 0x25, 0x47, 0x57, 0xe8, 0x65, 0x27, 0x7b, 0xb7, 0x35, 0xfd, 0x06, 0xde, 0x28, 0xe8,
-	0x6a, 0x1f, 0xe4, 0x98, 0x4f, 0x4e, 0xf0, 0x6b, 0xd4, 0x1c, 0x80, 0xdc, 0x8b, 0xa2, 0x4a, 0x8f,
-	0x92, 0xaf, 0x2b, 0x3d, 0xca, 0xb6, 0xf4, 0x6e, 0xea, 0x1e, 0x2d, 0xbc, 0x5e, 0xee, 0x81, 0xbf,
-	0x3a, 0xe8, 0x9a, 0xe1, 0x2f, 0x3d, 0x1a, 0xee, 0xfe, 0x13, 0x56, 0xf5, 0x57, 0xbb, 0x77, 0x7e,
-	0xa1, 0x15, 0x40, 0xb4, 0x80, 0x07, 0xb8, 0x5b, 0x08, 0x28, 0x9c, 0x29, 0xc8, 0x71, 0x11, 0x9c,
-	0x68, 0x65, 0xfd, 0x27, 0xdf, 0xe7, 0xae, 0x73, 0x3a, 0x77, 0x9d, 0x5f, 0x73, 0xd7, 0xf9, 0xbc,
-	0x70, 0x6b, 0xa7, 0x0b, 0xb7, 0xf6, 0x73, 0xe1, 0xd6, 0x5e, 0x6e, 0x87, 0x3c, 0x7b, 0x2b, 0x03,
-	0x7f, 0x0c, 0x31, 0x89, 0xc6, 0x09, 0x8b, 0x0d, 0xd2, 0x40, 0xb3, 0x59, 0xca, 0x44, 0xd0, 0xd4,
-	0xdf, 0xad, 0x47, 0x7f, 0x02, 0x00, 0x00, 0xff, 0xff, 0x19, 0x8d, 0xb6, 0xc2, 0x63, 0x05, 0x00,
-	0x00,
+	// 505 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x93, 0xcf, 0x6e, 0x13, 0x31,
+	0x10, 0xc6, 0xb3, 0x8b, 0x88, 0xc0, 0xf4, 0x9f, 0x0c, 0x42, 0x61, 0x49, 0x97, 0x62, 0xa9, 0xa5,
+	0x42, 0xc2, 0x56, 0xcb, 0xb1, 0x42, 0xa8, 0x1c, 0xa8, 0xb8, 0xa0, 0x92, 0x23, 0x1c, 0x22, 0xef,
+	0xc6, 0x2c, 0x96, 0x76, 0x6d, 0x37, 0xb6, 0x51, 0x2b, 0xc4, 0xa5, 0xe2, 0x01, 0x90, 0x78, 0x07,
+	0x9e, 0x85, 0x63, 0x25, 0x2e, 0x1c, 0x51, 0xc2, 0x23, 0xf0, 0x00, 0x68, 0x6d, 0x47, 0xd9, 0x90,
+	0xa4, 0xbd, 0x44, 0x9a, 0x9d, 0x99, 0xef, 0xfb, 0xcd, 0x78, 0x02, 0xd6, 0xb9, 0xb4, 0xe4, 0xc4,
+	0xb2, 0xe1, 0x19, 0x56, 0x43, 0x69, 0x24, 0xbc, 0xc1, 0xa5, 0x3d, 0xc5, 0x5c, 0xda, 0xa4, 0x5b,
+	0x48, 0x59, 0x94, 0x8c, 0x50, 0xc5, 0x09, 0x15, 0x42, 0x1a, 0x6a, 0xb8, 0x14, 0xda, 0xd7, 0x25,
+	0xf7, 0x42, 0xd6, 0x45, 0x99, 0x7d, 0x4f, 0xa8, 0x08, 0x12, 0xc9, 0xe3, 0x5c, 0xea, 0x4a, 0x6a,
+	0x92, 0x51, 0xcd, 0xbc, 0x36, 0xf9, 0xb8, 0x97, 0x31, 0x43, 0xf7, 0x88, 0xa2, 0x05, 0x17, 0x4e,
+	0x67, 0x22, 0xe3, 0x6b, 0xfb, 0x2e, 0x22, 0x3e, 0x08, 0xa9, 0xd5, 0x1a, 0x8d, 0x4b, 0xeb, 0x43,
+	0x74, 0x07, 0xc0, 0x37, 0xb5, 0xd6, 0x31, 0x1d, 0xd2, 0x4a, 0xf7, 0xd8, 0x89, 0x65, 0xda, 0xa0,
+	0xe7, 0xe0, 0xf6, 0xcc, 0x57, 0xad, 0xa4, 0xd0, 0x0c, 0xee, 0x82, 0xb6, 0x72, 0x5f, 0x3a, 0xd1,
+	0x56, 0xb4, 0x7b, 0x6b, 0x7f, 0x03, 0x4f, 0xc6, 0xc2, 0xa1, 0x32, 0xe4, 0xd1, 0x13, 0x70, 0xdf,
+	0x09, 0x1c, 0x31, 0xf3, 0x4a, 0xda, 0xd7, 0xb4, 0x62, 0x5a, 0xd1, 0x9c, 0x05, 0x7d, 0xb8, 0x06,
+	0x62, 0x3e, 0x70, 0x22, 0x37, 0x7b, 0x31, 0x1f, 0xa0, 0x77, 0xa0, 0xbb, 0xb8, 0x3c, 0x18, 0x1f,
+	0x80, 0x1a, 0xbb, 0x2f, 0x68, 0xc5, 0x94, 0xa6, 0x39, 0x0b, 0xfe, 0x77, 0xa7, 0xfe, 0x33, 0x6d,
+	0x2b, 0xdc, 0x47, 0xae, 0x16, 0xb1, 0xc0, 0x72, 0x58, 0x96, 0x8b, 0x58, 0x5e, 0x02, 0x30, 0xdd,
+	0x5f, 0x10, 0xde, 0xc1, 0x61, 0x67, 0xf5, 0xb2, 0xb1, 0x7f, 0xc8, 0xb0, 0x6c, 0x7c, 0x4c, 0x8b,
+	0x49, 0x6f, 0xaf, 0xd1, 0x89, 0xbe, 0x47, 0x61, 0x88, 0x39, 0x9f, 0x30, 0xc4, 0x33, 0xb0, 0x36,
+	0x19, 0xc2, 0x25, 0xea, 0x2d, 0x5e, 0xbb, 0x64, 0x8a, 0x55, 0xde, 0x88, 0x34, 0x3c, 0x9a, 0xe1,
+	0x8c, 0x1d, 0xe7, 0xa3, 0x2b, 0x39, 0xbd, 0x77, 0x13, 0x74, 0xff, 0x6f, 0x0c, 0xae, 0x3b, 0x50,
+	0xd8, 0x07, 0x6d, 0xff, 0x6e, 0xb0, 0x3b, 0x65, 0x98, 0x3f, 0x87, 0x64, 0x73, 0x49, 0xd6, 0x8b,
+	0xa3, 0xce, 0xf9, 0xcf, 0x3f, 0xdf, 0x62, 0x08, 0x37, 0xea, 0xbb, 0x3a, 0xad, 0x7f, 0x88, 0x3f,
+	0x03, 0xf8, 0x25, 0x02, 0x2b, 0xcd, 0x99, 0xe0, 0xf6, 0x7f, 0x4a, 0x8b, 0xef, 0x23, 0xd9, 0xb9,
+	0xaa, 0x2c, 0x38, 0x6f, 0x3b, 0xe7, 0x07, 0x70, 0x73, 0xea, 0x3c, 0xbb, 0x62, 0xf2, 0x89, 0x0f,
+	0x3e, 0xc3, 0xf3, 0x08, 0xac, 0x37, 0xfb, 0x0f, 0xcb, 0x72, 0x8e, 0x64, 0xf1, 0x75, 0xcc, 0x91,
+	0x2c, 0x79, 0x5c, 0xb4, 0xe5, 0x48, 0x12, 0xd8, 0x59, 0x46, 0xf2, 0xe2, 0xe0, 0xc7, 0x28, 0x8d,
+	0x2e, 0x46, 0x69, 0xf4, 0x7b, 0x94, 0x46, 0x5f, 0xc7, 0x69, 0xeb, 0x62, 0x9c, 0xb6, 0x7e, 0x8d,
+	0xd3, 0xd6, 0xdb, 0x87, 0x05, 0x37, 0x1f, 0x6c, 0x86, 0x73, 0x59, 0x91, 0x32, 0x17, 0xac, 0xf2,
+	0x1a, 0x5e, 0xc5, 0x9c, 0x29, 0xa6, 0xb3, 0xb6, 0xfb, 0xb7, 0x3e, 0xfd, 0x17, 0x00, 0x00, 0xff,
+	0xff, 0x9c, 0x05, 0x8a, 0x22, 0x59, 0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -467,9 +357,8 @@ const _ = grpc.SupportPackageIsVersion4
 type QueryClient interface {
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
 	// this line is used by starport scaffolding # 2
-	Iou(ctx context.Context, in *QueryGetIouRequest, opts ...grpc.CallOption) (*QueryGetIouResponse, error)
-	IouAll(ctx context.Context, in *QueryAllIouRequest, opts ...grpc.CallOption) (*QueryAllIouResponse, error)
-	IouAllByBaseDenom(ctx context.Context, in *QueryAllIouByBaseDenomRequest, opts ...grpc.CallOption) (*QueryAllIouByBaseDenomResponse, error)
+	IouNamespace(ctx context.Context, in *QueryGetIouNamespaceRequest, opts ...grpc.CallOption) (*QueryGetIouNamespaceResponse, error)
+	IouNamespaceAll(ctx context.Context, in *QueryAllIouNamespaceRequest, opts ...grpc.CallOption) (*QueryAllIouNamespaceResponse, error)
 }
 
 type queryClient struct {
@@ -489,27 +378,18 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
-func (c *queryClient) Iou(ctx context.Context, in *QueryGetIouRequest, opts ...grpc.CallOption) (*QueryGetIouResponse, error) {
-	out := new(QueryGetIouResponse)
-	err := c.cc.Invoke(ctx, "/ioux.iou.Query/Iou", in, out, opts...)
+func (c *queryClient) IouNamespace(ctx context.Context, in *QueryGetIouNamespaceRequest, opts ...grpc.CallOption) (*QueryGetIouNamespaceResponse, error) {
+	out := new(QueryGetIouNamespaceResponse)
+	err := c.cc.Invoke(ctx, "/ioux.iou.Query/IouNamespace", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *queryClient) IouAll(ctx context.Context, in *QueryAllIouRequest, opts ...grpc.CallOption) (*QueryAllIouResponse, error) {
-	out := new(QueryAllIouResponse)
-	err := c.cc.Invoke(ctx, "/ioux.iou.Query/IouAll", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *queryClient) IouAllByBaseDenom(ctx context.Context, in *QueryAllIouByBaseDenomRequest, opts ...grpc.CallOption) (*QueryAllIouByBaseDenomResponse, error) {
-	out := new(QueryAllIouByBaseDenomResponse)
-	err := c.cc.Invoke(ctx, "/ioux.iou.Query/IouAllByBaseDenom", in, out, opts...)
+func (c *queryClient) IouNamespaceAll(ctx context.Context, in *QueryAllIouNamespaceRequest, opts ...grpc.CallOption) (*QueryAllIouNamespaceResponse, error) {
+	out := new(QueryAllIouNamespaceResponse)
+	err := c.cc.Invoke(ctx, "/ioux.iou.Query/IouNamespaceAll", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -520,9 +400,8 @@ func (c *queryClient) IouAllByBaseDenom(ctx context.Context, in *QueryAllIouByBa
 type QueryServer interface {
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
 	// this line is used by starport scaffolding # 2
-	Iou(context.Context, *QueryGetIouRequest) (*QueryGetIouResponse, error)
-	IouAll(context.Context, *QueryAllIouRequest) (*QueryAllIouResponse, error)
-	IouAllByBaseDenom(context.Context, *QueryAllIouByBaseDenomRequest) (*QueryAllIouByBaseDenomResponse, error)
+	IouNamespace(context.Context, *QueryGetIouNamespaceRequest) (*QueryGetIouNamespaceResponse, error)
+	IouNamespaceAll(context.Context, *QueryAllIouNamespaceRequest) (*QueryAllIouNamespaceResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -532,14 +411,11 @@ type UnimplementedQueryServer struct {
 func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
 }
-func (*UnimplementedQueryServer) Iou(ctx context.Context, req *QueryGetIouRequest) (*QueryGetIouResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Iou not implemented")
+func (*UnimplementedQueryServer) IouNamespace(ctx context.Context, req *QueryGetIouNamespaceRequest) (*QueryGetIouNamespaceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method IouNamespace not implemented")
 }
-func (*UnimplementedQueryServer) IouAll(ctx context.Context, req *QueryAllIouRequest) (*QueryAllIouResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method IouAll not implemented")
-}
-func (*UnimplementedQueryServer) IouAllByBaseDenom(ctx context.Context, req *QueryAllIouByBaseDenomRequest) (*QueryAllIouByBaseDenomResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method IouAllByBaseDenom not implemented")
+func (*UnimplementedQueryServer) IouNamespaceAll(ctx context.Context, req *QueryAllIouNamespaceRequest) (*QueryAllIouNamespaceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method IouNamespaceAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -564,56 +440,38 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_Iou_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetIouRequest)
+func _Query_IouNamespace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetIouNamespaceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).Iou(ctx, in)
+		return srv.(QueryServer).IouNamespace(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ioux.iou.Query/Iou",
+		FullMethod: "/ioux.iou.Query/IouNamespace",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).Iou(ctx, req.(*QueryGetIouRequest))
+		return srv.(QueryServer).IouNamespace(ctx, req.(*QueryGetIouNamespaceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_IouAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllIouRequest)
+func _Query_IouNamespaceAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllIouNamespaceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).IouAll(ctx, in)
+		return srv.(QueryServer).IouNamespaceAll(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ioux.iou.Query/IouAll",
+		FullMethod: "/ioux.iou.Query/IouNamespaceAll",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).IouAll(ctx, req.(*QueryAllIouRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Query_IouAllByBaseDenom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllIouByBaseDenomRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).IouAllByBaseDenom(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ioux.iou.Query/IouAllByBaseDenom",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).IouAllByBaseDenom(ctx, req.(*QueryAllIouByBaseDenomRequest))
+		return srv.(QueryServer).IouNamespaceAll(ctx, req.(*QueryAllIouNamespaceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -627,16 +485,12 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Query_Params_Handler,
 		},
 		{
-			MethodName: "Iou",
-			Handler:    _Query_Iou_Handler,
+			MethodName: "IouNamespace",
+			Handler:    _Query_IouNamespace_Handler,
 		},
 		{
-			MethodName: "IouAll",
-			Handler:    _Query_IouAll_Handler,
-		},
-		{
-			MethodName: "IouAllByBaseDenom",
-			Handler:    _Query_IouAllByBaseDenom_Handler,
+			MethodName: "IouNamespaceAll",
+			Handler:    _Query_IouNamespaceAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -701,7 +555,7 @@ func (m *QueryParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetIouRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetIouNamespaceRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -711,25 +565,27 @@ func (m *QueryGetIouRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetIouRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetIouNamespaceRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetIouRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetIouNamespaceRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Id != 0 {
-		i = encodeVarintQuery(dAtA, i, uint64(m.Id))
+	if len(m.Id) > 0 {
+		i -= len(m.Id)
+		copy(dAtA[i:], m.Id)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Id)))
 		i--
-		dAtA[i] = 0x8
+		dAtA[i] = 0xa
 	}
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetIouResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetIouNamespaceResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -739,19 +595,19 @@ func (m *QueryGetIouResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetIouResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetIouNamespaceResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetIouResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetIouNamespaceResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Iou != nil {
+	if m.IouNamepsace != nil {
 		{
-			size, err := m.Iou.MarshalToSizedBuffer(dAtA[:i])
+			size, err := m.IouNamepsace.MarshalToSizedBuffer(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -764,7 +620,7 @@ func (m *QueryGetIouResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryAllIouRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryAllIouNamespaceRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -774,12 +630,12 @@ func (m *QueryAllIouRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryAllIouRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryAllIouNamespaceRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryAllIouRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryAllIouNamespaceRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -799,7 +655,7 @@ func (m *QueryAllIouRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryAllIouResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryAllIouNamespaceResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -809,12 +665,12 @@ func (m *QueryAllIouResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryAllIouResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryAllIouNamespaceResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryAllIouResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryAllIouNamespaceResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -831,101 +687,10 @@ func (m *QueryAllIouResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x12
 	}
-	if len(m.Ious) > 0 {
-		for iNdEx := len(m.Ious) - 1; iNdEx >= 0; iNdEx-- {
+	if len(m.IouNamespaces) > 0 {
+		for iNdEx := len(m.IouNamespaces) - 1; iNdEx >= 0; iNdEx-- {
 			{
-				size, err := m.Ious[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintQuery(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *QueryAllIouByBaseDenomRequest) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *QueryAllIouByBaseDenomRequest) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *QueryAllIouByBaseDenomRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.Pagination != nil {
-		{
-			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintQuery(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.BaseDenom) > 0 {
-		i -= len(m.BaseDenom)
-		copy(dAtA[i:], m.BaseDenom)
-		i = encodeVarintQuery(dAtA, i, uint64(len(m.BaseDenom)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *QueryAllIouByBaseDenomResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *QueryAllIouByBaseDenomResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *QueryAllIouByBaseDenomResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.Pagination != nil {
-		{
-			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintQuery(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.Ious) > 0 {
-		for iNdEx := len(m.Ious) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Ious[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				size, err := m.IouNamespaces[iNdEx].MarshalToSizedBuffer(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -972,73 +737,38 @@ func (m *QueryParamsResponse) Size() (n int) {
 	return n
 }
 
-func (m *QueryGetIouRequest) Size() (n int) {
+func (m *QueryGetIouNamespaceRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if m.Id != 0 {
-		n += 1 + sovQuery(uint64(m.Id))
-	}
-	return n
-}
-
-func (m *QueryGetIouResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Iou != nil {
-		l = m.Iou.Size()
-		n += 1 + l + sovQuery(uint64(l))
-	}
-	return n
-}
-
-func (m *QueryAllIouRequest) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Pagination != nil {
-		l = m.Pagination.Size()
-		n += 1 + l + sovQuery(uint64(l))
-	}
-	return n
-}
-
-func (m *QueryAllIouResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.Ious) > 0 {
-		for _, e := range m.Ious {
-			l = e.Size()
-			n += 1 + l + sovQuery(uint64(l))
-		}
-	}
-	if m.Pagination != nil {
-		l = m.Pagination.Size()
-		n += 1 + l + sovQuery(uint64(l))
-	}
-	return n
-}
-
-func (m *QueryAllIouByBaseDenomRequest) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.BaseDenom)
+	l = len(m.Id)
 	if l > 0 {
 		n += 1 + l + sovQuery(uint64(l))
 	}
+	return n
+}
+
+func (m *QueryGetIouNamespaceResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.IouNamepsace != nil {
+		l = m.IouNamepsace.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllIouNamespaceRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
 	if m.Pagination != nil {
 		l = m.Pagination.Size()
 		n += 1 + l + sovQuery(uint64(l))
@@ -1046,14 +776,14 @@ func (m *QueryAllIouByBaseDenomRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryAllIouByBaseDenomResponse) Size() (n int) {
+func (m *QueryAllIouNamespaceResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if len(m.Ious) > 0 {
-		for _, e := range m.Ious {
+	if len(m.IouNamespaces) > 0 {
+		for _, e := range m.IouNamespaces {
 			l = e.Size()
 			n += 1 + l + sovQuery(uint64(l))
 		}
@@ -1207,7 +937,7 @@ func (m *QueryParamsResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryGetIouRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryGetIouNamespaceRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1230,376 +960,15 @@ func (m *QueryGetIouRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetIouRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryGetIouNamespaceRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetIouRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryGetIouNamespaceRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
-			if wireType != 0 {
+			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
-			}
-			m.Id = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Id |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *QueryGetIouResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetIouResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetIouResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Iou", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Iou == nil {
-				m.Iou = &Iou{}
-			}
-			if err := m.Iou.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *QueryAllIouRequest) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllIouRequest: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllIouRequest: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Pagination == nil {
-				m.Pagination = &query.PageRequest{}
-			}
-			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *QueryAllIouResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllIouResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllIouResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Ious", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Ious = append(m.Ious, &Iou{})
-			if err := m.Ious[len(m.Ious)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Pagination == nil {
-				m.Pagination = &query.PageResponse{}
-			}
-			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *QueryAllIouByBaseDenomRequest) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllIouByBaseDenomRequest: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllIouByBaseDenomRequest: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field BaseDenom", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -1627,9 +996,145 @@ func (m *QueryAllIouByBaseDenomRequest) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.BaseDenom = string(dAtA[iNdEx:postIndex])
+			m.Id = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 2:
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetIouNamespaceResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetIouNamespaceResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetIouNamespaceResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field IouNamepsace", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.IouNamepsace == nil {
+				m.IouNamepsace = &IouNamespace{}
+			}
+			if err := m.IouNamepsace.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllIouNamespaceRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllIouNamespaceRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllIouNamespaceRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
 			}
@@ -1686,7 +1191,7 @@ func (m *QueryAllIouByBaseDenomRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryAllIouByBaseDenomResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryAllIouNamespaceResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1709,15 +1214,15 @@ func (m *QueryAllIouByBaseDenomResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllIouByBaseDenomResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryAllIouNamespaceResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllIouByBaseDenomResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryAllIouNamespaceResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Ious", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field IouNamespaces", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -1744,8 +1249,8 @@ func (m *QueryAllIouByBaseDenomResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Ious = append(m.Ious, &Iou{})
-			if err := m.Ious[len(m.Ious)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.IouNamespaces = append(m.IouNamespaces, &IouNamespace{})
+			if err := m.IouNamespaces[len(m.IouNamespaces)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

@@ -41,3 +41,29 @@ func NewKeeper(cdc codec.Marshaler, storeKey, memKey sdk.StoreKey, paramSpace pa
 func (k Keeper) Logger(ctx sdk.Context) log.Logger {
 	return ctx.Logger().With("module", fmt.Sprintf("x/%s", types.ModuleName))
 }
+
+func (k Keeper) IssueIou(ctx sdk.Context, coin sdk.Coin, destination sdk.AccAddress) error {
+	coins := sdk.NewCoins(coin)
+	err := k.bankKeeper.MintCoins(ctx, types.ModuleName, coins)
+	if err != nil {
+		return err
+	}
+	err = k.bankKeeper.SendCoinsFromModuleToAccount(ctx, types.ModuleName, destination, coins)
+	if err != nil {
+		k.bankKeeper.BurnCoins(ctx, types.ModuleName, coins)
+		return err
+	}
+
+	return nil
+}
+
+func (k Keeper) BurnIou(ctx sdk.Context, coin sdk.Coin, holder sdk.AccAddress) error {
+	coins := sdk.NewCoins(coin)
+	err := k.bankKeeper.SendCoinsFromAccountToModule(ctx, holder, types.ModuleName, coins)
+	if err != nil {
+		return err
+	}
+	k.bankKeeper.BurnCoins(ctx, types.ModuleName, coins)
+
+	return nil
+}

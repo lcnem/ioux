@@ -22,6 +22,6 @@ func KeyPrefix(p string) []byte {
 }
 
 const (
-	IouKey      = "Iou-value-"
-	IouCountKey = "Iou-count-"
+	IouNamespaceKey      = "IouNamespace-value-"
+	IouNamespaceCountKey = "IouNamespace-count-"
 )

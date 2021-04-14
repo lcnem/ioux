@@ -6,23 +6,23 @@ import (
 	"github.com/lcnem/ioux/types"
 )
 
-var _ sdk.Msg = &MsgCreateIou{}
+var _ sdk.Msg = &MsgCreateIouNamespace{}
 
-func NewMsgCreateIou(namespace string, baseDenom string, issuer types.StringAccAddress, admin types.StringAccAddress) *MsgCreateIou {
-	return &MsgCreateIou{
-		Namespace: namespace, BaseDenom: baseDenom, Issuer: issuer, Admin: admin,
+func NewMsgCreateIouNamespace(id string, admin sdk.AccAddress, issuer sdk.AccAddress) *MsgCreateIouNamespace {
+	return &MsgCreateIouNamespace{
+		Id: id, Admin: types.StringAccAddress(admin), Issuer: types.StringAccAddress(issuer),
 	}
 }
 
-func (msg *MsgCreateIou) Route() string {
+func (msg *MsgCreateIouNamespace) Route() string {
 	return RouterKey
 }
 
-func (msg *MsgCreateIou) Type() string {
+func (msg *MsgCreateIouNamespace) Type() string {
 	return "CreateIou"
 }
 
-func (msg *MsgCreateIou) GetSigners() []sdk.AccAddress {
+func (msg *MsgCreateIouNamespace) GetSigners() []sdk.AccAddress {
 	admin, err := sdk.AccAddressFromBech32(string(msg.Admin))
 	if err != nil {
 		panic(err)
@@ -30,12 +30,15 @@ func (msg *MsgCreateIou) GetSigners() []sdk.AccAddress {
 	return []sdk.AccAddress{admin}
 }
 
-func (msg *MsgCreateIou) GetSignBytes() []byte {
+func (msg *MsgCreateIouNamespace) GetSignBytes() []byte {
 	bz := ModuleCdc.MustMarshalJSON(msg)
 	return sdk.MustSortJSON(bz)
 }
 
-func (msg *MsgCreateIou) ValidateBasic() error {
+func (msg *MsgCreateIouNamespace) ValidateBasic() error {
+	if !namespaceRegExp.MatchString(msg.Id) {
+		return ErrInvalidNamespaceId
+	}
 	_, err := sdk.AccAddressFromBech32(string(msg.Issuer))
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid issuer address (%s)", err)
@@ -47,23 +50,67 @@ func (msg *MsgCreateIou) ValidateBasic() error {
 	return nil
 }
 
-var _ sdk.Msg = &MsgUpdateIouIssuer{}
+var _ sdk.Msg = &MsgUpdateIouNamespaceAdmin{}
 
-func NewMsgUpdateIouIssuer(namespace string, baseDenom string, issuer types.StringAccAddress, admin types.StringAccAddress) *MsgUpdateIouIssuer {
-	return &MsgUpdateIouIssuer{
-		Namespace: namespace, BaseDenom: baseDenom, Issuer: issuer, Admin: admin,
+func NewMsgUpdateIouNamespaceAdmin(id string, adminBefore sdk.AccAddress, adminAfter sdk.AccAddress) *MsgUpdateIouNamespaceAdmin {
+	return &MsgUpdateIouNamespaceAdmin{
+		Id: id, AdminBefore: types.StringAccAddress(adminBefore), AdminAfter: types.StringAccAddress(adminAfter),
 	}
 }
 
-func (msg *MsgUpdateIouIssuer) Route() string {
+func (msg *MsgUpdateIouNamespaceAdmin) Route() string {
 	return RouterKey
 }
 
-func (msg *MsgUpdateIouIssuer) Type() string {
+func (msg *MsgUpdateIouNamespaceAdmin) Type() string {
 	return "CreateIou"
 }
 
-func (msg *MsgUpdateIouIssuer) GetSigners() []sdk.AccAddress {
+func (msg *MsgUpdateIouNamespaceAdmin) GetSigners() []sdk.AccAddress {
+	admin, err := sdk.AccAddressFromBech32(string(msg.AdminBefore))
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{admin}
+}
+
+func (msg *MsgUpdateIouNamespaceAdmin) GetSignBytes() []byte {
+	bz := ModuleCdc.MustMarshalJSON(msg)
+	return sdk.MustSortJSON(bz)
+}
+
+func (msg *MsgUpdateIouNamespaceAdmin) ValidateBasic() error {
+	if !namespaceRegExp.MatchString(msg.Id) {
+		return ErrInvalidNamespaceId
+	}
+	_, err := sdk.AccAddressFromBech32(string(msg.AdminBefore))
+	if err != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid admin address (%s)", err)
+	}
+	_, err = sdk.AccAddressFromBech32(string(msg.AdminAfter))
+	if err != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid admin address (%s)", err)
+	}
+	return nil
+}
+
+var _ sdk.Msg = &MsgUpdateIouNamespaceIssuer{}
+
+func NewMsgUpdateIouNamespaceIssuer(id string, admin sdk.AccAddress, issuer sdk.AccAddress) *MsgUpdateIouNamespaceIssuer {
+	return &MsgUpdateIouNamespaceIssuer{
+		Id: id, Admin: types.StringAccAddress(admin), Issuer: types.StringAccAddress(issuer),
+	}
+}
+
+func (msg *MsgUpdateIouNamespaceIssuer) Route() string {
+	return RouterKey
+}
+
+func (msg *MsgUpdateIouNamespaceIssuer) Type() string {
+	return "CreateIou"
+}
+
+func (msg *MsgUpdateIouNamespaceIssuer) GetSigners() []sdk.AccAddress {
 	admin, err := sdk.AccAddressFromBech32(string(msg.Admin))
 	if err != nil {
 		panic(err)
@@ -71,12 +118,15 @@ func (msg *MsgUpdateIouIssuer) GetSigners() []sdk.AccAddress {
 	return []sdk.AccAddress{admin}
 }
 
-func (msg *MsgUpdateIouIssuer) GetSignBytes() []byte {
+func (msg *MsgUpdateIouNamespaceIssuer) GetSignBytes() []byte {
 	bz := ModuleCdc.MustMarshalJSON(msg)
 	return sdk.MustSortJSON(bz)
 }
 
-func (msg *MsgUpdateIouIssuer) ValidateBasic() error {
+func (msg *MsgUpdateIouNamespaceIssuer) ValidateBasic() error {
+	if !namespaceRegExp.MatchString(msg.Id) {
+		return ErrInvalidNamespaceId
+	}
 	_, err := sdk.AccAddressFromBech32(string(msg.Issuer))
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid issuer address (%s)", err)
@@ -90,9 +140,9 @@ func (msg *MsgUpdateIouIssuer) ValidateBasic() error {
 
 var _ sdk.Msg = &MsgIssueIou{}
 
-func NewMsgIssueIou(namespace string, prefix string, baseDenom string, issuer types.StringAccAddress, amount sdk.Coin) *MsgIssueIou {
+func NewMsgIssueIou(namespaceId string, prefix string, baseDenom string, issuer sdk.AccAddress, amount sdk.Int) *MsgIssueIou {
 	return &MsgIssueIou{
-		Namespace: namespace, Prefix: prefix, BaseDenom: baseDenom, Issuer: issuer, Amount: amount,
+		NamespaceId: namespaceId, Prefix: prefix, BaseDenom: baseDenom, Issuer: types.StringAccAddress(issuer), Amount: amount,
 	}
 }
 
@@ -118,18 +168,37 @@ func (msg *MsgIssueIou) GetSignBytes() []byte {
 }
 
 func (msg *MsgIssueIou) ValidateBasic() error {
+	if !namespaceRegExp.MatchString(msg.NamespaceId) {
+		return ErrInvalidNamespaceId
+	}
+	if !prefixRegExp.MatchString(msg.Prefix) {
+		return ErrInvalidPrefix
+	}
+	denom := GetDenom(msg.NamespaceId, msg.Prefix, msg.BaseDenom)
+	if sdk.ValidateDenom(denom) != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidCoins, "invalid denom %s", denom)
+	}
+
 	_, err := sdk.AccAddressFromBech32(string(msg.Issuer))
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid issuer address (%s)", err)
+	}
+	_, err = sdk.AccAddressFromBech32(string(msg.Destination))
+	if err != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid issuer address (%s)", err)
+	}
+
+	if !msg.Amount.IsPositive() {
+		return sdkerrors.Wrap(sdkerrors.ErrInvalidCoins, "amount must be positive")
 	}
 	return nil
 }
 
 var _ sdk.Msg = &MsgBurnIou{}
 
-func NewMsgBurnIou(namespace string, prefix string, baseDenom string, holder types.StringAccAddress, amount sdk.Coin) *MsgBurnIou {
+func NewMsgBurnIou(namespaceId string, prefix string, baseDenom string, holder sdk.AccAddress, amount sdk.Int) *MsgBurnIou {
 	return &MsgBurnIou{
-		Namespace: namespace, Prefix: prefix, BaseDenom: baseDenom, Holder: holder, Amount: amount,
+		NamespaceId: namespaceId, Prefix: prefix, BaseDenom: baseDenom, Holder: types.StringAccAddress(holder), Amount: amount,
 	}
 }
 func (msg *MsgBurnIou) Route() string {
@@ -154,9 +223,25 @@ func (msg *MsgBurnIou) GetSignBytes() []byte {
 }
 
 func (msg *MsgBurnIou) ValidateBasic() error {
+	if !namespaceRegExp.MatchString(msg.NamespaceId) {
+		return ErrInvalidNamespaceId
+	}
+	if !prefixRegExp.MatchString(msg.Prefix) {
+		return ErrInvalidPrefix
+	}
+	denom := GetDenom(msg.NamespaceId, msg.Prefix, msg.BaseDenom)
+	if sdk.ValidateDenom(denom) != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidCoins, "invalid denom %s", denom)
+	}
+
 	_, err := sdk.AccAddressFromBech32(string(msg.Holder))
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid holder address (%s)", err)
 	}
+
+	if !msg.Amount.IsPositive() {
+		return sdkerrors.Wrap(sdkerrors.ErrInvalidCoins, "amount must be positive")
+	}
+
 	return nil
 }

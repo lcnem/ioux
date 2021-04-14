@@ -11,8 +11,8 @@ import (
 
 func CmdListIou() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "list-iou",
-		Short: "list all iou",
+		Use:   "list-namespace",
+		Short: "list all namespace",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
@@ -23,11 +23,11 @@ func CmdListIou() *cobra.Command {
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			params := &types.QueryAllIouRequest{
+			params := &types.QueryAllIouNamespaceRequest{
 				Pagination: pageReq,
 			}
 
-			res, err := queryClient.IouAll(context.Background(), params)
+			res, err := queryClient.IouNamespaceAll(context.Background(), params)
 			if err != nil {
 				return err
 			}
@@ -43,19 +43,19 @@ func CmdListIou() *cobra.Command {
 
 func CmdShowIou() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-iou [id]",
-		Short: "shows a iou",
+		Use:   "show-namespace [id]",
+		Short: "shows a iou namespace",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			params := &types.QueryGetIouRequest{
+			params := &types.QueryGetIouNamespaceRequest{
 				Id: args[0],
 			}
 
-			res, err := queryClient.Iou(context.Background(), params)
+			res, err := queryClient.IouNamespace(context.Background(), params)
 			if err != nil {
 				return err
 			}

@@ -10,7 +10,7 @@ func DefaultGenesis() *GenesisState {
 	return &GenesisState{
 		Params: Params{},
 		// this line is used by starport scaffolding # genesis/types/default
-		Ious: []*Iou{},
+		IouNamespaces: []*IouNamespace{},
 	}
 }
 
@@ -21,11 +21,11 @@ func (gs GenesisState) Validate() error {
 	// Check for duplicated ID in iou
 	iouIdMap := make(map[string]bool)
 
-	for _, elem := range gs.Ious {
-		if _, ok := iouIdMap[elem.Namespace+elem.BaseDenom]; ok {
+	for _, elem := range gs.IouNamespaces {
+		if _, ok := iouIdMap[elem.Id]; ok {
 			return fmt.Errorf("duplicated id for iou")
 		}
-		iouIdMap[elem.Namespace+elem.BaseDenom] = true
+		iouIdMap[elem.Id] = true
 	}
 
 	return nil
